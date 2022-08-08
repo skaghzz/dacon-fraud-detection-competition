@@ -45,6 +45,12 @@ xgboost 이진 분류 모델을 이용했습니다.
 - 클래스 불균형
     - SMOTE 패키지를 이용한 오버샘플링 방법과 xgboost의 파라미터로 scale_pos_weight를 주는 방법 중 scale_pos_weight를 주는 방법이 더 좋은 성능을 보여줬습니다.
 
+- 앙상블
+    - 5개의 xgboost모델로 hard voting을 진행했습니다. 과반수 voting이 아닌 or votring으로 최소 1개 이상의 모델에서 fraud라는 결과가 나오면, fraud로 판단하도록 하는 앙상블을 진행했습니다.
+    - 최소 1개, 최소 2개, 최소 3개(=hard voting)으로 비교해본 결과 '최소 2개'결과와 '최소 3개' public score 결과가 같았습니다.
+    - non ensemble 모델과 ensemble 모델의 추론 결과가 같았습니다(validation f1 score, LB public score, fraud ratio).
+    - 아래 코드는 non ensemble 모델을 활용한 코드를 제출하였습니다. ensemble model 결과도 어땠을지 궁금하네요.
+
 ## 결과
 macro-f1
 - public: 0.93419 (3rd)
